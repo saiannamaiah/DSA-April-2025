@@ -72,8 +72,8 @@ public class LinkedList {
         var index = 0;
         var current = first;
 
-        while(current != null) {
-            if(current.value == item) {
+        while (current != null) {
+            if (current.value == item) {
                 return index;
             } else {
                 current = current.next;
@@ -86,4 +86,50 @@ public class LinkedList {
     public boolean contains(int item) {
         return indexOf(item) != -1;
     }
+
+    //reverse
+
+    //10 , 20 , 30 , 40 , 50
+    // p    c    f
+    // 10>20>30>40>50
+
+    // so we will change just directions of the nodes
+    //and put first last // head tail later
+
+    // so how this works is
+    //explanation
+    //only change direction in 2 nodes
+    //previos is 10 right pointing to 20
+    //current.next == 10
+    //and then moce our variables
+    //make previous 20
+    //current 30
+    //do the same in the last change the head and tail to make linked list
+
+
+    public void reverse() {
+
+        var previous = first;
+
+        var current = first.next;
+
+
+        while (current != null) {
+
+            var following = current.next;
+
+            current.next = previous;
+
+            previous = current;
+
+            current = following;
+        }
+        last = first;
+        last.next = null;
+        first = previous;
+    }
+
+
+
+
 }
